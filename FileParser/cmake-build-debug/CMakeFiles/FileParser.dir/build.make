@@ -42,10 +42,10 @@ RM = "C:\Program Files\JetBrains\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser"
+CMAKE_SOURCE_DIR = "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\cmake-build-debug"
+CMAKE_BINARY_DIR = "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles\FileParser.dir\depend.make
@@ -57,59 +57,59 @@ include CMakeFiles\FileParser.dir\flags.make
 
 CMakeFiles\FileParser.dir\main.cpp.obj: CMakeFiles\FileParser.dir\flags.make
 CMakeFiles\FileParser.dir\main.cpp.obj: ..\main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FileParser.dir/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FileParser.dir/main.cpp.obj"
 	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1427~1.291\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\FileParser.dir\main.cpp.obj /FdCMakeFiles\FileParser.dir\ /FS -c "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\main.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\FileParser.dir\main.cpp.obj /FdCMakeFiles\FileParser.dir\ /FS -c "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\main.cpp"
 <<
 
 CMakeFiles\FileParser.dir\main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FileParser.dir/main.cpp.i"
 	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1427~1.291\bin\Hostx86\x86\cl.exe > CMakeFiles\FileParser.dir\main.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\main.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\main.cpp"
 <<
 
 CMakeFiles\FileParser.dir\main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FileParser.dir/main.cpp.s"
 	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1427~1.291\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\FileParser.dir\main.cpp.s /c "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\main.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\FileParser.dir\main.cpp.s /c "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\main.cpp"
 <<
 
 CMakeFiles\FileParser.dir\FileParser.cpp.obj: CMakeFiles\FileParser.dir\flags.make
 CMakeFiles\FileParser.dir\FileParser.cpp.obj: ..\FileParser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FileParser.dir/FileParser.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FileParser.dir/FileParser.cpp.obj"
 	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1427~1.291\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\FileParser.dir\FileParser.cpp.obj /FdCMakeFiles\FileParser.dir\ /FS -c "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\FileParser.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\FileParser.dir\FileParser.cpp.obj /FdCMakeFiles\FileParser.dir\ /FS -c "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\FileParser.cpp"
 <<
 
 CMakeFiles\FileParser.dir\FileParser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FileParser.dir/FileParser.cpp.i"
 	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1427~1.291\bin\Hostx86\x86\cl.exe > CMakeFiles\FileParser.dir\FileParser.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\FileParser.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\FileParser.cpp"
 <<
 
 CMakeFiles\FileParser.dir\FileParser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FileParser.dir/FileParser.cpp.s"
 	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1427~1.291\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\FileParser.dir\FileParser.cpp.s /c "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\FileParser.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\FileParser.dir\FileParser.cpp.s /c "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\FileParser.cpp"
 <<
 
 CMakeFiles\FileParser.dir\nnLayer.cpp.obj: CMakeFiles\FileParser.dir\flags.make
 CMakeFiles\FileParser.dir\nnLayer.cpp.obj: ..\nnLayer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FileParser.dir/nnLayer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FileParser.dir/nnLayer.cpp.obj"
 	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1427~1.291\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\FileParser.dir\nnLayer.cpp.obj /FdCMakeFiles\FileParser.dir\ /FS -c "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\nnLayer.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\FileParser.dir\nnLayer.cpp.obj /FdCMakeFiles\FileParser.dir\ /FS -c "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\nnLayer.cpp"
 <<
 
 CMakeFiles\FileParser.dir\nnLayer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FileParser.dir/nnLayer.cpp.i"
 	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1427~1.291\bin\Hostx86\x86\cl.exe > CMakeFiles\FileParser.dir\nnLayer.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\nnLayer.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\nnLayer.cpp"
 <<
 
 CMakeFiles\FileParser.dir\nnLayer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FileParser.dir/nnLayer.cpp.s"
 	C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1427~1.291\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\FileParser.dir\nnLayer.cpp.s /c "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\nnLayer.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\FileParser.dir\nnLayer.cpp.s /c "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\nnLayer.cpp"
 <<
 
 # Object files for target FileParser
@@ -126,9 +126,9 @@ FileParser.exe: CMakeFiles\FileParser.dir\FileParser.cpp.obj
 FileParser.exe: CMakeFiles\FileParser.dir\nnLayer.cpp.obj
 FileParser.exe: CMakeFiles\FileParser.dir\build.make
 FileParser.exe: CMakeFiles\FileParser.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable FileParser.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable FileParser.exe"
 	"C:\Program Files\JetBrains\CLion 2021.2.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\FileParser.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\mt.exe --manifests -- C:\PROGRA~2\MIB055~1\2019\COMMUN~1\VC\Tools\MSVC\1427~1.291\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\FileParser.dir\objects1.rsp @<<
- /out:FileParser.exe /implib:FileParser.lib /pdb:"C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\cmake-build-debug\FileParser.pdb" /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
+ /out:FileParser.exe /implib:FileParser.lib /pdb:"C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\cmake-build-debug\FileParser.pdb" /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<
 
 # Rule to build all files generated by this target.
@@ -140,6 +140,6 @@ CMakeFiles\FileParser.dir\clean:
 .PHONY : CMakeFiles\FileParser.dir\clean
 
 CMakeFiles\FileParser.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser" "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser" "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\cmake-build-debug" "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\cmake-build-debug" "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\FileParser\cmake-build-debug\CMakeFiles\FileParser.dir\DependInfo.cmake" --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser" "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser" "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\cmake-build-debug" "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\cmake-build-debug" "C:\Users\Mikke\OneDrive - Aarhus Universitet\Skrivebord\CIVIL_3_SEMESTER\RnD\repo\RandD\FileParser\cmake-build-debug\CMakeFiles\FileParser.dir\DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles\FileParser.dir\depend
 
