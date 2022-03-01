@@ -4,22 +4,13 @@ set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
 
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "CXX"
-  )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/Mikke/OneDrive - Aarhus Universitet/Skrivebord/CIVIL_3_SEMESTER/RnD/repo/RandD/FileParser/FileParser.cpp" "C:/Users/Mikke/OneDrive - Aarhus Universitet/Skrivebord/CIVIL_3_SEMESTER/RnD/repo/RandD/FileParser/cmake-build-debug/CMakeFiles/FileParser.dir/FileParser.cpp.obj"
-  "C:/Users/Mikke/OneDrive - Aarhus Universitet/Skrivebord/CIVIL_3_SEMESTER/RnD/repo/RandD/FileParser/main.cpp" "C:/Users/Mikke/OneDrive - Aarhus Universitet/Skrivebord/CIVIL_3_SEMESTER/RnD/repo/RandD/FileParser/cmake-build-debug/CMakeFiles/FileParser.dir/main.cpp.obj"
-  "C:/Users/Mikke/OneDrive - Aarhus Universitet/Skrivebord/CIVIL_3_SEMESTER/RnD/repo/RandD/FileParser/nnLayer.cpp" "C:/Users/Mikke/OneDrive - Aarhus Universitet/Skrivebord/CIVIL_3_SEMESTER/RnD/repo/RandD/FileParser/cmake-build-debug/CMakeFiles/FileParser.dir/nnLayer.cpp.obj"
-  )
-set(CMAKE_CXX_COMPILER_ID "MSVC")
-
-# The include file search paths:
-set(CMAKE_CXX_TARGET_INCLUDE_PATH
   )
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/Users/MIKKELJENSEN/Desktop/CIVIL_3_SEMESTER/RnD/RandD/FileParser/FileParser.cpp" "CMakeFiles/FileParser.dir/FileParser.cpp.obj" "gcc" "CMakeFiles/FileParser.dir/FileParser.cpp.obj.d"
+  "C:/Users/MIKKELJENSEN/Desktop/CIVIL_3_SEMESTER/RnD/RandD/FileParser/main.cpp" "CMakeFiles/FileParser.dir/main.cpp.obj" "gcc" "CMakeFiles/FileParser.dir/main.cpp.obj.d"
+  "C:/Users/MIKKELJENSEN/Desktop/CIVIL_3_SEMESTER/RnD/RandD/FileParser/nnLayer.cpp" "CMakeFiles/FileParser.dir/nnLayer.cpp.obj" "gcc" "CMakeFiles/FileParser.dir/nnLayer.cpp.obj.d"
   )
 
 # Targets to which this target links.

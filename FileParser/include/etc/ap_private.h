@@ -96,7 +96,6 @@ typedef unsigned __int64 uint64_t;
 
 // FIXME eventually, this should have nothing to do with half.
 #include "hls_half.h"
-
 #ifndef INLINE
 #define INLINE inline
 // Enable to debug ap_int/ap_fixed

@@ -15,8 +15,6 @@ unsigned int FileParser::openfile(std::string filename) {
 
     filedescrip_.open(filename);
 
-    //std::ifstream input_file(filename);
-
     if(!filedescrip_){
         return -1;
     } else{
@@ -34,14 +32,10 @@ unsigned int FileParser::closefile() {
 }
 
 std::string FileParser::readfile() {
-    unsigned int buf_index = 0;
-    char buf;
     std::string line;
     std::vector<std::string> lines;
 
     while (std::getline(filedescrip_, line)){
-        //filedescrip_ >> buf;
-        //outbuf[buf_index++] = buf;
         lines.push_back(line);
         lines.push_back("\n"); // Add fake newline, the SD card driver will do this for us
     }
@@ -49,7 +43,13 @@ std::string FileParser::readfile() {
     std::string s;
     for (const auto &piece : lines) s += piece;
     return s;
+}
+
+std::shared_ptr<nnLayer> FileParser::parseString(std::string) {
 
 
+
+
+    return nullptr;
 }
 

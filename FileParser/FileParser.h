@@ -7,6 +7,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
+#include "nnLayer.h"
 
 
 
@@ -21,8 +23,7 @@ public:
     unsigned int closefile();
     std::string readfile();
 
-    char** parseString(std::string);
-
+    std::shared_ptr<nnLayer> parseString(std::string);
 
 private:
     std::ifstream filedescrip_;

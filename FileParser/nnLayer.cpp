@@ -4,15 +4,34 @@
 
 #include "nnLayer.h"
 
-#include <utility>
 
+nnLayer::nnLayer(unsigned int n_neur, std::shared_ptr<float> w,
+                 std::shared_ptr<float> b, unsigned int act_f) {
 
-nnLayer::nnLayer(unsigned int n_neur, std::shared_ptr<ap_fixed<15, 1>> w,
-                 std::shared_ptr<ap_fixed<15, 1>> b, unsigned int act_f) {
+    if (n_neur >= MAX_NN_SIZE){
+        n_neurons = MAX_NN_SIZE;
+    } else{
+        n_neurons = n_neur;
+    }
 
     act_function = act_f;
-    n_neurons = n_neur;
-
     weights = std::move(w);
     bias = std::move(b);
+
+}
+
+const std::shared_ptr<CUSTOMTYPE> &nnLayer::getWeights() const {
+    return weights;
+}
+
+const std::shared_ptr<CUSTOMTYPE> &nnLayer::getBias() const {
+    return bias;
+}
+
+unsigned int nnLayer::getActFunction() const {
+    return act_function;
+}
+
+unsigned int nnLayer::getNNeurons() const {
+    return n_neurons;
 }
