@@ -3,4 +3,4 @@ project(FileParser)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(FileParser main.cpp FileParser.cpp FileParser.h nnLayer.cpp nnLayer.h)
+add_executable(FileParser main.cpp FileParser.cpp FileParser.h nnLayer.cpp nnLayer.h globals.h)

@@ -5,17 +5,27 @@
 #ifndef FILEPARSER_NNLAYER_H
 #define FILEPARSER_NNLAYER_H
 
-#include "include/ap_fixed.h"
-
+//#include "include/ap_fixed.h"
+#include <memory>
+#include "globals.h"
 
 class nnLayer {
 
 public:
-    nnLayer(unsigned int n_neur, std::shared_ptr<ap_fixed<15, 1>> w, std::shared_ptr<ap_fixed<15, 1>> b, unsigned int act_f);
+    nnLayer(unsigned int n_neur, std::shared_ptr<float> w, std::shared_ptr<float> b, unsigned int act_f);
+
+    const std::shared_ptr<CUSTOMTYPE> &getWeights() const;
+
+    const std::shared_ptr<CUSTOMTYPE> &getBias() const;
+
+    unsigned int getActFunction() const;
+
+    unsigned int getNNeurons() const;
+
 
 private:
-    std::shared_ptr<ap_fixed<15,1>> weights;
-    std::shared_ptr<ap_fixed<15,1>> bias;
+    std::shared_ptr<CUSTOMTYPE> weights;
+    std::shared_ptr<CUSTOMTYPE> bias;
     unsigned int act_function;
     unsigned int n_neurons;
 };
