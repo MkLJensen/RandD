@@ -54,8 +54,6 @@ std::vector<nnLayer> FileParser::parseString(std::string inString) {
     unsigned int numbersOfNewline = std::count(temp.begin(), temp.end(), '\n');
 
     // Allocate the numbers of nnLayers Needed
-    // TODO NEEDS A CHECK
-    auto *layerArray = new std::shared_ptr<nnLayer>[numbersOfNewline];
     std::vector<nnLayer> nnLayerVector;
 
 
@@ -68,7 +66,6 @@ std::vector<nnLayer> FileParser::parseString(std::string inString) {
 
         nnLayer test = parseline(workString);
         nnLayerVector.push_back(test);
-        //layerArray->get()[i] = parseline(workString);
 
         // Update Temp TO Be without Parsed line and move newlinePointer
         temp = temp.substr(newLinePointer+1, temp.size()-newLinePointer);
@@ -143,14 +140,3 @@ std::shared_ptr<CUSTOMTYPE> FileParser::getBiasFromSMatch(std::string biasString
 
     return b;
 }
-
-
-
-/*int len = 3;
-std::shared_ptr<CUSTOMTYPE> weights(new CUSTOMTYPE[len]);
-std::shared_ptr<CUSTOMTYPE> bias(new CUSTOMTYPE[len]);
-
-weights.get()[2] = 0.72321;
-std::shared_ptr<nnLayer> layer1(new nnLayer(3, weights, bias, 1));
-
-std::cout << layer1->getWeights().get()[2] << std::endl;*/
