@@ -8,6 +8,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <regex>
 #include "nnLayer.h"
 
 
@@ -23,9 +24,14 @@ public:
     unsigned int closefile();
     std::string readfile();
 
-    std::shared_ptr<nnLayer> parseString(std::string);
+    std::vector<nnLayer> parseString(const std::string);
 
 private:
+
+    std::shared_ptr<CUSTOMTYPE> getWeightsFromSMatch(std::string, unsigned int);
+    std::shared_ptr<CUSTOMTYPE> getBiasFromSMatch(std::string, unsigned int);
+
+    nnLayer parseline(std::string);
     std::ifstream filedescrip_;
 
 };

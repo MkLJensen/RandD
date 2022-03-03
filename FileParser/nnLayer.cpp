@@ -5,8 +5,8 @@
 #include "nnLayer.h"
 
 
-nnLayer::nnLayer(unsigned int n_neur, std::shared_ptr<float> w,
-                 std::shared_ptr<float> b, unsigned int act_f) {
+nnLayer::nnLayer(unsigned int n_neur, std::shared_ptr<CUSTOMTYPE> w,
+                 std::shared_ptr<CUSTOMTYPE> b, unsigned int act_f) {
 
     if (n_neur >= MAX_NN_SIZE){
         n_neurons = MAX_NN_SIZE;
@@ -15,16 +15,16 @@ nnLayer::nnLayer(unsigned int n_neur, std::shared_ptr<float> w,
     }
 
     act_function = act_f;
-    weights = std::move(w);
-    bias = std::move(b);
+    weights = w;
+    bias = b;
 
 }
 
-const std::shared_ptr<CUSTOMTYPE> &nnLayer::getWeights() const {
+const std::shared_ptr<CUSTOMTYPE> nnLayer::getWeights() const {
     return weights;
 }
 
-const std::shared_ptr<CUSTOMTYPE> &nnLayer::getBias() const {
+const std::shared_ptr<CUSTOMTYPE> nnLayer::getBias() const {
     return bias;
 }
 

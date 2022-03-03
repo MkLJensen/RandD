@@ -12,11 +12,11 @@
 class nnLayer {
 
 public:
-    nnLayer(unsigned int n_neur, std::shared_ptr<float> w, std::shared_ptr<float> b, unsigned int act_f);
+    nnLayer(unsigned int n_neur, std::shared_ptr<CUSTOMTYPE> w, std::shared_ptr<CUSTOMTYPE> b, unsigned int act_f);
 
-    const std::shared_ptr<CUSTOMTYPE> &getWeights() const;
+    const std::shared_ptr<CUSTOMTYPE> getWeights() const;
 
-    const std::shared_ptr<CUSTOMTYPE> &getBias() const;
+    const std::shared_ptr<CUSTOMTYPE> getBias() const;
 
     unsigned int getActFunction() const;
 
