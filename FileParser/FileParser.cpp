@@ -51,14 +51,14 @@ std::vector<nnLayer> FileParser::parseString(std::string inString) {
 
     std::string temp = inString;
 
-    unsigned int numbersOfNewline = std::count(temp.begin(), temp.end(), '\n');
+    unsigned int numbersOfNewline = std::count(temp.begin(), temp.end(), 'A');
 
     // Allocate the numbers of nnLayers Needed
     std::vector<nnLayer> nnLayerVector;
 
 
     // Find first newline pointer
-    unsigned int newLinePointer = temp.find('\n');
+    unsigned int newLinePointer = temp.find("\r\n");
 
     for (int i = 0; i<numbersOfNewline; i++) {
 
@@ -70,7 +70,7 @@ std::vector<nnLayer> FileParser::parseString(std::string inString) {
         // Update Temp TO Be without Parsed line and move newlinePointer
         temp = temp.substr(newLinePointer+1, temp.size()-newLinePointer);
         if (!temp.empty()){
-            newLinePointer = temp.find('\n');
+            newLinePointer = temp.find("\r\n");
         }else{
             break;
         }
