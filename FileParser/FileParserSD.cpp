@@ -1,53 +1,104 @@
-//
-// Created by Mikke on 24-02-2022.
-//
+/*
+ * FileParserSD.cpp
+ *
+ *  Created on: 8. mar. 2022
+ *      Author: Mikkel
+ * 	Implementation of SD Card is inspired from Kim Bjerge, Aarhus University
+ */
+#include "FileParserSD.h"
 
-#include <sstream>
-#include "FileParser.h"
-#include <vector>
-
-FileParser::FileParser() {}
-
-FileParser::~FileParser() {
-    filedescrip_.close();
+/**
+ * Initial Paths of the SD card is set
+ */
+FileParserSD::FileParserSD() {
+	pathName = "0:/";  			/* Set Initial Path of SD Card */
+	fileName = "";				/* Set Initial Filename to "null" */
 }
 
-unsigned int FileParser::openfile(std::string filename) {
-
-    filedescrip_.open(filename);
-
-    if(!filedescrip_){
-        return -1;
-    } else{
-        return 0;
-    }
+FileParserSD::~FileParserSD() {
+    closefile();
 }
 
-unsigned int FileParser::closefile() {
-    if (filedescrip_){
-        filedescrip_.close();
-        return 0;
-    } else{
-        return -1;
-    }
+/**
+ * Open the file with the @param filename
+ */
+int FileParserSD::openfile(std::string filename) {
+	FRESULT result;
+
+	/* Return Failure if card is not mounted */
+	if(!isMounted){
+		return XST_FAILURE;
+	}
+
+	/* Open the file in always read mode and only the existing file */
+	result = f_open(&mFIL, filename.c_str(), FA_OPEN_EXISTING | FA_READ);
+	if(result){
+		return XST_FAILURE;
+	}
+
+	/* Set the file pointer to the start of the file */
+	result = f_lseek(&mFIL, 0);
+	if(result){
+			return XST_FAILURE;
+	}
+	return XST_SUCCESS;
 }
 
-std::string FileParser::readfile() {
-    std::string line;
-    std::vector<std::string> lines;
+/**
+ * Mount the File in the system
+ */
+int FileParserSD::mount(bool remount)
+{
 
-    while (std::getline(filedescrip_, line)){
-        lines.push_back(line);
-        lines.push_back("\n"); // Add fake newline, the SD card driver will do this for us
-    }
+	FRESULT result;
+	if (!isMounted or remount) { /* Ensure that we aren't already mounted */
+		result = f_mount(&mFatFS, pathName.c_str(), 0);
 
-    std::string s;
-    for (const auto &piece : lines) s += piece;
-    return s;
+		if (result != FR_OK) { /* If Mounts fails, return error */
+			return XST_FAILURE;
+		}
+		isMounted = true;
+	}
+	return XST_SUCCESS;
 }
 
-std::vector<nnLayer> FileParser::parseString(std::string inString) {
+/**
+ * Close the file descriptor correctly
+ */
+int FileParserSD::closefile() {
+	FRESULT result = f_close(&mFIL);
+	if (result) {
+		return XST_FAILURE;
+	}
+	return XST_SUCCESS;
+}
 
+std::string FileParserSD::readfile(bool fromStart) {
+
+	//TODO FIX THE STATIC BUFFER SIZE
+	char buf[MAX_INPUT_FILE_CHAR_SIZE];
+
+	FRESULT result;
+	if (fromStart) { /* Move filepointer to start */
+		result = f_lseek(&mFIL, 0);
+		if (result) {
+			return "FF";
+		}
+	}
+	result = f_read(&mFIL, (void*)buf, sizeof(buf), &NumberOfBytesRead);
+	if (result) {
+		return "FF";
+	}
+
+	std::string ret(buf, buf+NumberOfBytesRead);
+
+	return ret;
+}
+
+/**
+ * Parse the whole string from config file to a nnLayer Vector
+ */
+std::vector<nnLayer> FileParserSD::parseString(std::string inString) {
 
     std::string temp = inString;
 
@@ -56,11 +107,10 @@ std::vector<nnLayer> FileParser::parseString(std::string inString) {
     // Allocate the numbers of nnLayers Needed
     std::vector<nnLayer> nnLayerVector;
 
-
     // Find first newline pointer
     unsigned int newLinePointer = temp.find("\r\n");
 
-    for (int i = 0; i<numbersOfNewline; i++) {
+    for (unsigned int i = 0; i<numbersOfNewline; i++) {
 
         std::string workString = temp.substr(0, newLinePointer);
 
@@ -72,13 +122,13 @@ std::vector<nnLayer> FileParser::parseString(std::string inString) {
         if (!temp.empty()){
             newLinePointer = temp.find("\r\n");
         }else{
-            break;
+            break; // TODO PROB NOT NEEDED
         }
     }
     return nnLayerVector;
 }
 
-nnLayer FileParser::parseline(const std::string inLine) {
+nnLayer FileParserSD::parseline(const std::string inLine) {
 
     std::smatch SmatchWeights;
     std::smatch SmatchBias;
@@ -101,20 +151,17 @@ nnLayer FileParser::parseline(const std::string inLine) {
     std::shared_ptr<CUSTOMTYPE> weights(getWeightsFromSMatch(weightString, numberOfWeights));
     std::shared_ptr<CUSTOMTYPE> bias(getBiasFromSMatch(biasString, numberOfBias));
 
-
-
-
     nnLayer* bufLayer = new nnLayer(numberOfWeights, weights, bias, act);
     return *bufLayer;
 }
 
-std::shared_ptr<CUSTOMTYPE> FileParser::getWeightsFromSMatch(std::string weightString, unsigned int numberOfWeights) {
+std::shared_ptr<CUSTOMTYPE> FileParserSD::getWeightsFromSMatch(std::string weightString, unsigned int numberOfWeights) {
 
     std::string buf;
     std::stringstream sstream(weightString);
 
     std::shared_ptr<CUSTOMTYPE> w(new CUSTOMTYPE[numberOfWeights]);
-    for (int i = 0; i < numberOfWeights; ++i) {
+    for (unsigned int i = 0; i < numberOfWeights; ++i) {
         std::getline(sstream, buf, ',');
         // TODO REMEMBER TO FIX WHEN FIXED-POINT
         w.get()[i] = std::stof(buf);
@@ -123,16 +170,15 @@ std::shared_ptr<CUSTOMTYPE> FileParser::getWeightsFromSMatch(std::string weightS
     return w;
 }
 
-std::shared_ptr<CUSTOMTYPE> FileParser::getBiasFromSMatch(std::string biasString, unsigned int numberOfBias) {
+std::shared_ptr<CUSTOMTYPE> FileParserSD::getBiasFromSMatch(std::string biasString, unsigned int numberOfBias) {
     // Remove the "FB," from the string
     biasString.replace(biasString.begin(), biasString.begin()+3, "");
 
     std::string buf;
     std::stringstream sstream(biasString);
 
-
     std::shared_ptr<CUSTOMTYPE> b(new CUSTOMTYPE[numberOfBias]);
-    for (int i = 0; i < numberOfBias; ++i) {
+    for (unsigned int i = 0; i < numberOfBias; ++i) {
         std::getline(sstream, buf, ',');
         // TODO REMEMBER TO FIX WHEN FIXED-POINT
         b.get()[i] = std::stof(buf);
