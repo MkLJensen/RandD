@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Mikke/OneDrive - Aarhus Universitet/Skrivebord/CIVIL_3_SEMESTER/RnD/repo/RandD/FileParser/FileParser.cpp
+sstream
+-
+FileParser.h
+C:/Users/Mikke/OneDrive - Aarhus Universitet/Skrivebord/CIVIL_3_SEMESTER/RnD/repo/RandD/FileParser/FileParser.h
+vector
+-
+
+C:/Users/Mikke/OneDrive - Aarhus Universitet/Skrivebord/CIVIL_3_SEMESTER/RnD/repo/RandD/FileParser/FileParser.h
+iostream
+-
+fstream
+-
+vector
+-
+string
+-
+regex
+-
+nnLayer.h
+C:/Users/Mikke/OneDrive - Aarhus Universitet/Skrivebord/CIVIL_3_SEMESTER/RnD/repo/RandD/FileParser/nnLayer.h
+
+C:/Users/Mikke/OneDrive - Aarhus Universitet/Skrivebord/CIVIL_3_SEMESTER/RnD/repo/RandD/FileParser/globals.h
+
+C:/Users/Mikke/OneDrive - Aarhus Universitet/Skrivebord/CIVIL_3_SEMESTER/RnD/repo/RandD/FileParser/nnLayer.h
+memory
+-
+globals.h
+C:/Users/Mikke/OneDrive - Aarhus Universitet/Skrivebord/CIVIL_3_SEMESTER/RnD/repo/RandD/FileParser/globals.h
+

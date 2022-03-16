@@ -24,7 +24,7 @@ public:
     unsigned int closefile();
     std::string readfile();
 
-    std::vector<nnLayer> parseString(const std::string);
+    std::vector<nnLayer>* parseString(const std::string);
 
 private:
 
