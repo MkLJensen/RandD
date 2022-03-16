@@ -1,0 +1,3 @@
+"G:\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\FileParser.dir/objects.a
+"G:\CLion 2021.3.3\bin\mingw\bin\ar.exe" qc CMakeFiles\FileParser.dir/objects.a @CMakeFiles\FileParser.dir\objects1.rsp
+"G:\CLion 2021.3.3\bin\mingw\bin\g++.exe" -g -Wl,--whole-archive CMakeFiles\FileParser.dir/objects.a -Wl,--no-whole-archive -o FileParser.exe -Wl,--out-implib,libFileParser.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\FileParser.dir\linklibs.rsp

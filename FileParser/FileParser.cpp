@@ -104,7 +104,7 @@ nnLayer FileParser::parseline(const std::string inLine) {
 
 
 
-    nnLayer* bufLayer = new nnLayer(numberOfWeights, weights, bias, act);
+    nnLayer* bufLayer = new nnLayer(numberOfBias, weights, bias, act);
     return *bufLayer;
 }
 

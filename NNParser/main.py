@@ -103,31 +103,35 @@ def createNNConfigFile(filename, bias, weights, act=1):
         layersWeights = weights.iloc[i]
         layersBias = bias.iloc[i]
 
+        layersWeights = layersWeights.dropna()
         # Inputing the weights into string
-        layerString = ""
         for j in range(layersWeights.size):
-            if layersWeights[j] != np.nan:
+            if not np.isnan(layersWeights[j]):
                 if j == layersWeights.size-1:
-                    layerString = layerString + str(layersWeights[j])
+                    file1.write(str(float("{:.3f}".format(layersWeights[j]))))
                 else:
-                    layerString = layerString + str(layersWeights[j]) + ","
+                    file1.write(str(float("{:.3f}".format(layersWeights[j]))) + ",")
+
 
         # Adding the FA Seperator
-        layerString = layerString + ",FA,"
-        layerString = layerString + str(act) + ","
-        layerString = layerString + "FB,"
-        # Adding the Biases
-        for j in range(layersBias.size):
-            if layersWeights[j] != np.nan:
-                if j == layersBias.size-1:
-                    layerString = layerString + str(layersBias[j])
-                else:
-                    layerString = layerString + str(layersBias[j]) + ","
-        # Add newline
-        layerString = layerString + "\r\n"
-        file1.write(layerString)
+        file1.write(",FA," + str(act) + ",FB,")
 
+        # Adding the Biases
+
+        layersBias = layersBias.dropna()
+        for j in range(layersBias.size):
+            if not np.isnan(layersBias[j]):
+                if j == layersBias.size-1:
+                    file1.write(str(float("{:.3f}".format(layersBias[j]))))
+                else:
+                    file1.write(str(float("{:.3f}".format(layersBias[j]))) + ",")
+
+        # Add newline
+        file1.write("\n")
+
+    file1.close()
     print()
+
 
 if __name__ == '__main__':
     #JespersNN()
