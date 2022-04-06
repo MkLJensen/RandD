@@ -14,10 +14,15 @@ from sklearn.decomposition import PCA
 import keras.initializers
 import os
 
-def JespersNN():
+def sigmoid_approx(x):
+    return 0.5*(x/(1+abs(x)))+0.5
+
+def TrainNetwork():
     # Model / data parameters
     num_classes = 10
-    input_shape = 30
+    input_shape = 10
+    batch_size = 128
+    epochs = 5
 
     # the data, split between train and test sets
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -29,62 +34,88 @@ def JespersNN():
     reshaped_training_data = x_train.ravel().reshape(x_train.shape[0], x_train.shape[1] * x_train.shape[2])
     reshaped_test_data = x_test.ravel().reshape(x_test.shape[0], x_test.shape[1] * x_test.shape[2])
 
-    print("x_train shape:", reshaped_training_data.shape)
-    print(reshaped_training_data.shape[0], "train samples")
-    print(reshaped_test_data.shape[0], "test samples")
-
     # convert class vectors to binary class matrices
-
     y_train = to_categorical(y_train, num_classes)
     y_test = to_categorical(y_test, num_classes)
 
-    pca = PCA(n_components=input_shape)
+    # Run PCA
+    pca = PCA(n_components=input_shape, random_state=42)
     X_pca_train = pca.fit_transform(reshaped_training_data)
     X_pca_test = pca.transform(reshaped_test_data)
 
     model = keras.Sequential(
         [
             keras.Input(shape=input_shape),
-            layers.Dense(30, activation="relu", kernel_initializer=keras.initializers.random_normal(mean=0.0, stddev=0.05, seed=1),
-                         bias_initializer='zeros'),
-            layers.Dense(30, activation="relu", kernel_initializer=keras.initializers.random_normal(mean=0.0, stddev=0.05, seed=1),
+            layers.Dense(10, activation="relu",
+                         kernel_initializer=keras.initializers.random_normal(mean=0.0, stddev=0.05, seed=1),
                          bias_initializer='zeros'),
             layers.Dense(num_classes, activation="softmax",
-                         kernel_initializer=keras.initializers.random_normal(mean=0.0, stddev=0.05, seed=1), bias_initializer='zeros'),
+                         kernel_initializer=keras.initializers.random_normal(mean=0.0, stddev=0.05, seed=1),
+                         bias_initializer='zeros'),
         ]
     )
 
     model.summary()
 
-    batch_size = 128
-    epochs = 5
-
     model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
-
     model.fit(X_pca_train, y_train, batch_size=batch_size, epochs=epochs)
 
     score = model.evaluate(X_pca_train, y_train, verbose=0)
+    predict = model.predict(X_pca_test)
+
     print("Test loss:", score[0])
     print("Test accuracy:", score[1])
 
-    if os.path.exists("bias.csv"):
-        os.remove("bias.csv")
-    f = open("bias.csv", "a")
+    store_test_images_labels(X_pca_test, y_test)
+    store_bias_CSV("bias.csv", model)
+    store_weight_CSV("weights.csv", model, False)
+    store_bias_CSV("bias_opti.csv", model)
+    store_weight_CSV("weights_opti.csv", model, True)
+
+
+def store_bias_CSV(fileName, model):
+    if os.path.exists(fileName):
+        os.remove(fileName)
+    f = open(fileName, "a")
     for layer in model.layers:
         for bias in layer.get_weights()[1]:
             f.write(str(bias) + ",")
         f.write("\r\n")
     f.close()
 
-    if os.path.exists("weights.csv"):
-        os.remove("weights.csv")
-    f = open("weights.csv", "a")
+
+def store_weight_CSV(fileName, model, transpose):
+    if os.path.exists(fileName):
+        os.remove(fileName)
+    f = open(fileName, "a")
     for layer in model.layers:
-        for neuron in layer.get_weights()[0]:
+        layer_get_weights = layer.get_weights()[0]
+        if transpose == True:
+            layer_get_weights = layer_get_weights.transpose()
+
+        for neuron in layer_get_weights:
             for weight in neuron:
                 f.write(str(weight) + ",")
         f.write("\r\n")
     f.close()
+
+
+def store_test_images_labels(testImages, testLabels):
+    path = os.getcwd() + '\\content\\testSamples'
+
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+    for idx, sample in enumerate(testImages):
+        f = open(path+"\\testImg_" + str(idx) + ".txt", "w")
+        for component in sample:
+            f.write(str(component) + ",")
+        f.write("\r\n")
+
+    f = open(path+"\\labels.txt", "w")
+    for label in testLabels:
+        f.write(str(np.argmax(label)) + ",")
+        f.write("\r\n")
 
 
 def load_dat_files(file_path):
@@ -92,7 +123,6 @@ def load_dat_files(file_path):
 
 
 def createNNConfigFile(filename, bias, weights, act=1):
-
     # If File exists Make new
     if os.path.exists(filename):
         os.remove(filename)
@@ -107,11 +137,10 @@ def createNNConfigFile(filename, bias, weights, act=1):
         # Inputing the weights into string
         for j in range(layersWeights.size):
             if not np.isnan(layersWeights[j]):
-                if j == layersWeights.size-1:
+                if j == layersWeights.size - 1:
                     file1.write(str(float("{:.3f}".format(layersWeights[j]))))
                 else:
                     file1.write(str(float("{:.3f}".format(layersWeights[j]))) + ",")
-
 
         # Adding the FA Seperator
         file1.write(",FA," + str(act) + ",FB,")
@@ -121,7 +150,7 @@ def createNNConfigFile(filename, bias, weights, act=1):
         layersBias = layersBias.dropna()
         for j in range(layersBias.size):
             if not np.isnan(layersBias[j]):
-                if j == layersBias.size-1:
+                if j == layersBias.size - 1:
                     file1.write(str(float("{:.3f}".format(layersBias[j]))))
                 else:
                     file1.write(str(float("{:.3f}".format(layersBias[j]))) + ",")
@@ -134,12 +163,13 @@ def createNNConfigFile(filename, bias, weights, act=1):
 
 
 if __name__ == '__main__':
-    #JespersNN()
+    TrainNetwork()
 
     bias = load_dat_files('bias.csv')
     weights = load_dat_files('weights.csv')
-
     createNNConfigFile("testFile.txt", bias, weights)
 
-    print(bias)
+    bias = load_dat_files('bias_opti.csv')
+    weights = load_dat_files('weights_opti.csv')
+    createNNConfigFile("testFile_opti.txt", bias, weights)
 
