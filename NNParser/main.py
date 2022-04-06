@@ -1,6 +1,7 @@
 # Simple Python Script for Converting bias.dat, test.dat and weights.dat
 # files to a file structure used in Adaptive Neural Networks
 
+import sys
 import pandas as pd
 import numpy as np
 import keras
@@ -14,8 +15,12 @@ from sklearn.decomposition import PCA
 import keras.initializers
 import os
 
+import logging
+
+
 def sigmoid_approx(x):
     return 0.5*(x/(1+abs(x)))+0.5
+
 
 def TrainNetwork():
     # Model / data parameters
@@ -63,8 +68,8 @@ def TrainNetwork():
     score = model.evaluate(X_pca_train, y_train, verbose=0)
     predict = model.predict(X_pca_test)
 
-    print("Test loss:", score[0])
-    print("Test accuracy:", score[1])
+    logging.info("Test loss: {}".format(score[0]))
+    logging.info("Test accuracy: {}".format(score[1]))
 
     store_test_images_labels(X_pca_test, y_test)
     store_bias_CSV("bias.csv", model)
@@ -159,10 +164,15 @@ def createNNConfigFile(filename, bias, weights, act=1):
         file1.write("\n")
 
     file1.close()
-    print()
 
 
 if __name__ == '__main__':
+
+    logging.basicConfig(filename="logfile.log", encoding='utf-8', level=logging.DEBUG, filemode='w')
+    logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
+
+    print("test")
+
     TrainNetwork()
 
     bias = load_dat_files('bias.csv')
